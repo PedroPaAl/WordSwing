@@ -235,13 +235,13 @@ public class VistaWord extends javax.swing.JFrame {
         jToggleButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ali11.png"))); // NOI18N
         jPanel14.add(jToggleButton7);
 
-        jButton12.setText("jButton12");
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ali12.png"))); // NOI18N
         jPanel14.add(jButton12);
 
-        jButton14.setText("jButton14");
+        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ali13.png"))); // NOI18N
         jPanel14.add(jButton14);
 
-        jButton10.setText("jButton10");
+        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ali14.png"))); // NOI18N
         jPanel14.add(jButton10);
 
         jList1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
