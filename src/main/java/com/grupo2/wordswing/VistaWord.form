@@ -13,10 +13,6 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
-  <Events>
-    <EventHandler event="mouseWheelMoved" listener="java.awt.event.MouseWheelListener" parameters="java.awt.event.MouseWheelEvent" handler="formMouseWheelMoved"/>
-    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="formKeyPressed"/>
-  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -97,10 +93,10 @@
                       <Component id="jPanel18" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel14" min="-2" pref="272" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="16" max="32767" attributes="0"/>
                       <Component id="jPanel15" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="jPanel16" max="32767" attributes="0"/>
+                      <Component id="jPanel16" pref="107" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -390,20 +386,21 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JList" name="jList1">
+                    <Component class="javax.swing.JList" name="listStyle">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="24" style="0"/>
                         </Property>
                         <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                          <StringArray count="7">
-                            <StringItem index="0" value="&lt;html&gt;&lt;p&gt;Aac&lt;br&gt;Estilo 1&lt;/p&gt;&lt;/html&gt;"/>
-                            <StringItem index="1" value="&lt;html&gt;Aac&lt;br&gt;Estilo 2 &lt;/html&gt;"/>
-                            <StringItem index="2" value="&lt;html&gt;Aac&lt;br&gt;Estilo 3 &lt;/html&gt;"/>
-                            <StringItem index="3" value="&lt;html&gt;Aac&lt;br&gt;Estilo 4 &lt;/html&gt;"/>
-                            <StringItem index="4" value="&lt;html&gt;Aac&lt;br&gt;Estilo 5 &lt;/html&gt;"/>
-                            <StringItem index="5" value="&lt;html&gt;Aac&lt;br&gt;Estilo 6 &lt;/html&gt;"/>
-                            <StringItem index="6" value="&lt;html&gt;Aac&lt;br&gt;Estilo 7 &lt;/html&gt;"/>
+                          <StringArray count="8">
+                            <StringItem index="0" value="&lt;html&gt;&lt;p&gt;Abc&lt;br&gt;Estilo 1&lt;/p&gt;&lt;/html&gt;"/>
+                            <StringItem index="1" value="&lt;html&gt;Abc&lt;br&gt;Estilo 2 &lt;/html&gt;"/>
+                            <StringItem index="2" value="&lt;html&gt;Abc&lt;br&gt;Estilo 3 &lt;/html&gt;"/>
+                            <StringItem index="3" value="&lt;html&gt;AbC&lt;br&gt;Estilo 4 &lt;/html&gt;"/>
+                            <StringItem index="4" value="&lt;html&gt;Abc&lt;br&gt;Estilo 5 &lt;/html&gt;"/>
+                            <StringItem index="5" value="&lt;html&gt;Abc&lt;br&gt;Estilo 6 &lt;/html&gt;"/>
+                            <StringItem index="6" value="&lt;html&gt;Abc&lt;br&gt;Estilo 7 &lt;/html&gt;"/>
+                            <StringItem index="7" value="&lt;html&gt;Abc&lt;br&gt;Estilo 8 &lt;/html&gt;"/>
                           </StringArray>
                         </Property>
                         <Property name="selectionMode" type="int" value="0"/>
@@ -411,6 +408,9 @@
                         <Property name="layoutOrientation" type="int" value="2"/>
                         <Property name="visibleRowCount" type="int" value="-1"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="listStyleValueChanged"/>
+                      </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
@@ -440,9 +440,6 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Replace"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton16ActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton18">
                   <Properties>
@@ -460,15 +457,11 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jPanel13" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jPanel17" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jPanel17" pref="304" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
+                      <Component id="jPanel13" alignment="0" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -485,50 +478,11 @@
               <SubComponents>
                 <Container class="javax.swing.JPanel" name="jPanel13">
 
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                              <Component id="cmbBox" min="-2" pref="118" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="cmbTamaño" min="-2" pref="38" max="-2" attributes="0"/>
-                              <EmptySpace pref="11" max="32767" attributes="0"/>
-                              <Component id="jButton21" min="-2" pref="28" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton19" min="-2" pref="28" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton20" min="-2" pref="28" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton22" min="-2" pref="28" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jButton22" pref="32" max="32767" attributes="0"/>
-                                  <Component id="jButton20" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jButton19" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jButton21" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="cmbTamaño" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                                          <Component id="cmbBox" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+                    <Property name="useNullLayout" type="boolean" value="false"/>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JComboBox" name="cmbBox">
+                    <Component class="javax.swing.JComboBox" name="cmbFuente">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="23">
@@ -561,6 +515,11 @@
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="7" y="5" width="118" height="23"/>
+                        </Constraint>
+                      </Constraints>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="cmbTama&#xf1;o">
                       <Properties>
@@ -588,27 +547,52 @@
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="135" y="5" width="-1" height="23"/>
+                        </Constraint>
+                      </Constraints>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButton19">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jButton19"/>
                       </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="218" y="5" width="40" height="32"/>
+                        </Constraint>
+                      </Constraints>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButton20">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jButton19"/>
                       </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="252" y="5" width="28" height="32"/>
+                        </Constraint>
+                      </Constraints>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButton21">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="A"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                       </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="184" y="5" width="40" height="32"/>
+                        </Constraint>
+                      </Constraints>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButton22">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jButton19"/>
                       </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="286" y="5" width="28" height="32"/>
+                        </Constraint>
+                      </Constraints>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -622,16 +606,25 @@
                     <Component class="javax.swing.JToggleButton" name="tbtnNegrita">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;b&gt;B&lt;/b&gt;&lt;/html&gt;"/>
+                        <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                          <Insets value="[2, 0, 2, 0]"/>
+                        </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JToggleButton" name="jToggleButton2">
+                    <Component class="javax.swing.JToggleButton" name="tbtnCursiva">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;i&gt;I&lt;/i&gt;&lt;/html&gt;"/>
+                        <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                          <Insets value="[2, 0, 2, 0]"/>
+                        </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JToggleButton" name="jToggleButton1">
+                    <Component class="javax.swing.JToggleButton" name="tbtnSubrayado">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;u&gt;U&lt;/u&gt;&lt;/html&gt;"/>
+                        <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                          <Insets value="[2, 0, 2, 0]"/>
+                        </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButton24">
@@ -639,17 +632,26 @@
                         <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;strike&gt;abc&lt;/strike&gt;&lt;/html&gt;"/>
                         <Property name="actionCommand" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;strike&gt;abc&lt;/strike&#xa;&gt;&lt;/html&gt;"/>
                         <Property name="horizontalTextPosition" type="int" value="10"/>
+                        <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                          <Insets value="[2, 0, 2, 0]"/>
+                        </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButton28">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="&lt;html&gt;X&lt;sub&gt;2&lt;/sub&gt;&lt;/html&gt;&#xa;"/>
                         <Property name="horizontalTextPosition" type="int" value="2"/>
+                        <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                          <Insets value="[5, 14, 0, 14]"/>
+                        </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButton27">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="&lt;html&gt;X&lt;sup&gt;2&lt;/sup&gt;&lt;/html&gt;"/>
+                        <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                          <Insets value="[0, 14, 3, 14]"/>
+                        </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButton29">
@@ -837,7 +839,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="slider" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Component id="lblSlider" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -907,6 +909,10 @@
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseWheelMoved" listener="java.awt.event.MouseWheelListener" parameters="java.awt.event.MouseWheelEvent" handler="jTextArea1MouseWheelMoved"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextArea1KeyPressed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
