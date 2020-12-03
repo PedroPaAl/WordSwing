@@ -5,13 +5,17 @@
  */
 package com.grupo2.wordswing;
 
+import com.formdev.flatlaf.FlatLightLaf;
 import static java.awt.event.InputEvent.CTRL_DOWN_MASK;
 import static java.awt.event.KeyEvent.VK_B;
 import static java.awt.event.KeyEvent.VK_I;
 import static java.awt.event.KeyEvent.VK_U;
+import java.io.File;
 import java.util.Hashtable;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileSystemView;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
-
 
 /**
  *
@@ -32,7 +36,6 @@ public class VistaWord extends javax.swing.JFrame {
         tbtnCursiva.setSelected(false);
         tbtnSubrayado.setSelected(false);
     }
-    
 
     public VistaWord() {
         initComponents();
@@ -43,10 +46,8 @@ public class VistaWord extends javax.swing.JFrame {
             CambioSlider();
             AutoCompleteDecorator.decorate(cmbFuente);
             AutoCompleteDecorator.decorate(cmbTamaño);
-
         }
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -91,13 +92,6 @@ public class VistaWord extends javax.swing.JFrame {
         jButton16 = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
         jPanel18 = new javax.swing.JPanel();
-        jPanel13 = new javax.swing.JPanel();
-        cmbFuente = new javax.swing.JComboBox<>();
-        cmbTamaño = new javax.swing.JComboBox<>();
-        jButton19 = new javax.swing.JButton();
-        jButton20 = new javax.swing.JButton();
-        jButton21 = new javax.swing.JButton();
-        jButton22 = new javax.swing.JButton();
         jPanel17 = new javax.swing.JPanel();
         tbtnNegrita = new javax.swing.JToggleButton();
         tbtnCursiva = new javax.swing.JToggleButton();
@@ -108,6 +102,14 @@ public class VistaWord extends javax.swing.JFrame {
         jButton29 = new javax.swing.JButton();
         jButton25 = new javax.swing.JButton();
         jButton23 = new javax.swing.JButton();
+        jPanel21 = new javax.swing.JPanel();
+        cmbFuente = new javax.swing.JComboBox<>();
+        cmbTamaño = new javax.swing.JComboBox<>();
+        jPanel22 = new javax.swing.JPanel();
+        jButton19 = new javax.swing.JButton();
+        jButton20 = new javax.swing.JButton();
+        jButton21 = new javax.swing.JButton();
+        jButton22 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -121,15 +123,21 @@ public class VistaWord extends javax.swing.JFrame {
         jPanel19 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jPanel13 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1308, Short.MAX_VALUE)
+            .addGap(0, 1364, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,27 +303,6 @@ public class VistaWord extends javax.swing.JFrame {
         jButton18.setText("Select    ");
         jPanel16.add(jButton18);
 
-        jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        cmbFuente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Arial", "Calibri", "Cambria", "Candara", "Comic Sans", "Consolas", "Constantia", "Corbel", "Courier New", "Ebrima", "Gabriola", "Gadugi", "Georgia", "Impact", "Ink Free", "Marlett", "MV Boli", "Nirmala", "Palatino", "Segoe", "SimSin", "Sitka", "Tahoma" }));
-        jPanel13.add(cmbFuente, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 5, 118, 23));
-
-        cmbTamaño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8", "9", "10", "11", "12", "14", "16", "18", "20", "22", "24", "26", "28", "36", "48", "72" }));
-        jPanel13.add(cmbTamaño, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 5, -1, 23));
-
-        jButton19.setText("jButton19");
-        jPanel13.add(jButton19, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 5, 40, 32));
-
-        jButton20.setText("jButton19");
-        jPanel13.add(jButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 5, 28, 32));
-
-        jButton21.setText("A");
-        jButton21.setIconTextGap(0);
-        jPanel13.add(jButton21, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 5, 40, 32));
-
-        jButton22.setText("jButton19");
-        jPanel13.add(jButton22, new org.netbeans.lib.awtextra.AbsoluteConstraints(286, 5, 28, 32));
-
         jPanel17.setLayout(new java.awt.GridLayout(1, 0));
 
         tbtnNegrita.setText("<html><b>B</b></html>");
@@ -354,23 +341,71 @@ public class VistaWord extends javax.swing.JFrame {
         jButton23.setText("jButton23");
         jPanel17.add(jButton23);
 
+        cmbFuente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Arial", "Calibri", "Cambria", "Candara", "Comic Sans", "Consolas", "Constantia", "Corbel", "Courier New", "Ebrima", "Gabriola", "Gadugi", "Georgia", "Impact", "Ink Free", "Marlett", "MV Boli", "Nirmala", "Palatino", "Segoe", "SimSin", "Sitka", "Tahoma" }));
+
+        cmbTamaño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8", "9", "10", "11", "12", "14", "16", "18", "20", "22", "24", "26", "28", "36", "48", "72" }));
+        cmbTamaño.setMaximumSize(new java.awt.Dimension(38, 20));
+
+        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
+        jPanel21.setLayout(jPanel21Layout);
+        jPanel21Layout.setHorizontalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel21Layout.createSequentialGroup()
+                .addComponent(cmbFuente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbTamaño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 10, Short.MAX_VALUE))
+        );
+        jPanel21Layout.setVerticalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel21Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbFuente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbTamaño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+
+        jPanel22.setLayout(new java.awt.GridLayout());
+
+        jButton19.setText("A");
+        jPanel22.add(jButton19);
+
+        jButton20.setText("Aa");
+        jButton20.setMargin(new java.awt.Insets(0, 14, 0, 14));
+        jPanel22.add(jButton20);
+
+        jButton21.setText("A");
+        jButton21.setIconTextGap(0);
+        jPanel22.add(jButton21);
+
+        jButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Agoma.png"))); // NOI18N
+        jPanel22.add(jButton22);
+
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
         jPanel18Layout.setHorizontalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel18Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 304, Short.MAX_VALUE)
-                .addContainerGap())
-            .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel18Layout.createSequentialGroup()
+                        .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 3, Short.MAX_VALUE))
+                    .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel18Layout.createSequentialGroup()
-                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 29, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -383,23 +418,23 @@ public class VistaWord extends javax.swing.JFrame {
                 .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Home", jPanel2);
@@ -408,7 +443,7 @@ public class VistaWord extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1308, Short.MAX_VALUE)
+            .addGap(0, 1364, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -421,7 +456,7 @@ public class VistaWord extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1308, Short.MAX_VALUE)
+            .addGap(0, 1364, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -434,7 +469,7 @@ public class VistaWord extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1308, Short.MAX_VALUE)
+            .addGap(0, 1364, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -447,7 +482,7 @@ public class VistaWord extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1308, Short.MAX_VALUE)
+            .addGap(0, 1364, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -460,7 +495,7 @@ public class VistaWord extends javax.swing.JFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1308, Short.MAX_VALUE)
+            .addGap(0, 1364, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -473,7 +508,7 @@ public class VistaWord extends javax.swing.JFrame {
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1308, Short.MAX_VALUE)
+            .addGap(0, 1364, Short.MAX_VALUE)
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -486,7 +521,7 @@ public class VistaWord extends javax.swing.JFrame {
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1308, Short.MAX_VALUE)
+            .addGap(0, 1364, Short.MAX_VALUE)
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -548,11 +583,18 @@ public class VistaWord extends javax.swing.JFrame {
         jPanel19.setLayout(jPanel19Layout);
         jPanel19Layout.setHorizontalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -610,14 +652,23 @@ public class VistaWord extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_listStyleValueChanged
 
-    private void jTextArea1MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jTextArea1MouseWheelMoved
-        if (evt.getWheelRotation() > 0 && evt.getModifiersEx() == CTRL_DOWN_MASK) {
-            slider.setValue(slider.getValue() - 1);
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        int confirmacion = JOptionPane.showConfirmDialog(null,
+                "¿Desea guardar antes de salir?", "Mensaje de salida",
+                JOptionPane.YES_NO_OPTION);
+        if (confirmacion == JOptionPane.NO_OPTION) {
+            dispose();
         }
-        if (evt.getWheelRotation() < 0 && evt.getModifiersEx() == CTRL_DOWN_MASK) {
-            slider.setValue(slider.getValue() + 1);
+        else{
+        JFileChooser chooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        
+        int num = chooser.showDialog(this, "Guardar Archivo");
+        if (num == JFileChooser.APPROVE_OPTION){
+            System.out.println(chooser.getSelectedFile().getAbsoluteFile());
+            dispose();
         }
-    }//GEN-LAST:event_jTextArea1MouseWheelMoved
+        }        
+    }//GEN-LAST:event_formWindowClosing
 
     private void jTextArea1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyPressed
         if (evt.getModifiersEx() == CTRL_DOWN_MASK && evt.getKeyCode() == VK_B) {
@@ -643,6 +694,15 @@ public class VistaWord extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTextArea1KeyPressed
 
+    private void jTextArea1MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jTextArea1MouseWheelMoved
+        if (evt.getWheelRotation() > 0 && evt.getModifiersEx() == CTRL_DOWN_MASK) {
+            slider.setValue(slider.getValue() - 1);
+        }
+        if (evt.getWheelRotation() < 0 && evt.getModifiersEx() == CTRL_DOWN_MASK) {
+            slider.setValue(slider.getValue() + 1);
+        }
+    }//GEN-LAST:event_jTextArea1MouseWheelMoved
+
     /**
      * @param args the command line arguments
      */
@@ -652,22 +712,13 @@ public class VistaWord extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("SeaGlass".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaWord.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaWord.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaWord.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaWord.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            javax.swing.UIManager.setLookAndFeel(new FlatLightLaf());
+        } catch (Exception ex) {
+            System.err.println("Failed to initialize LaF");
         }
+
         //</editor-fold>
 
         /* Create and display the form */
@@ -723,6 +774,8 @@ public class VistaWord extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
+    private javax.swing.JPanel jPanel21;
+    private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
