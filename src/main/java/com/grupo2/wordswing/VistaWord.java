@@ -18,7 +18,7 @@ import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
  *
- * @author Pedro
+ * @author Grupo2
  */
 public class VistaWord extends javax.swing.JFrame {
 
