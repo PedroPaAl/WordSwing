@@ -10,7 +10,6 @@ import static java.awt.event.InputEvent.CTRL_DOWN_MASK;
 import static java.awt.event.KeyEvent.VK_B;
 import static java.awt.event.KeyEvent.VK_I;
 import static java.awt.event.KeyEvent.VK_U;
-import java.io.File;
 import java.util.Hashtable;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -25,12 +24,19 @@ public class VistaWord extends javax.swing.JFrame {
 
     Hashtable<Integer, String> labels = new Hashtable<>();
 
+    /**
+     * Cambia el label del slider dependiendo de como cambie este.
+     */
     public void CambioSlider() {
         int valor = slider.getValue();
         String texto = labels.get(valor);
         lblSlider.setText(texto);
     }
 
+    /**
+     * Deselecciona todas las opciones de diseño para no tener que cambiarlo en
+     * cada cambio de estilo.
+     */
     public void Deseleccionar() {
         tbtnNegrita.setSelected(false);
         tbtnCursiva.setSelected(false);
@@ -42,12 +48,14 @@ public class VistaWord extends javax.swing.JFrame {
 
         for (int i = 1; i <= 20; i++) {
             labels.put(i - 1, i * 10 + "%");
-
+            //Ponemos el label del slider con el valor por defecto del mismo.
             CambioSlider();
+            //Añade poder buscar por texto una fuente o tamaño
             AutoCompleteDecorator.decorate(cmbFuente);
             AutoCompleteDecorator.decorate(cmbTamaño);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -386,7 +394,7 @@ public class VistaWord extends javax.swing.JFrame {
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        jPanel22.setLayout(new java.awt.GridLayout());
+        jPanel22.setLayout(new java.awt.GridLayout(1, 0));
 
         jButton19.setText("A");
         jPanel22.add(jButton19);
@@ -409,13 +417,12 @@ public class VistaWord extends javax.swing.JFrame {
         jPanel18.setLayout(jPanel18Layout);
         jPanel18Layout.setHorizontalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel18Layout.createSequentialGroup()
-                    .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addContainerGap())
-                .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+            .addGroup(jPanel18Layout.createSequentialGroup()
+                .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
                 .addContainerGap(184, Short.MAX_VALUE)
                 .addComponent(jLabel2)
@@ -483,7 +490,7 @@ public class VistaWord extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -643,23 +650,18 @@ public class VistaWord extends javax.swing.JFrame {
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                        .addComponent(lblSlider)
-                        .addGap(4, 4, 4))))
             .addComponent(jButton26, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addComponent(slider, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 7, Short.MAX_VALUE))
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel6))
                     .addComponent(sliderbtnmas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(sliderbtnmenos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(sliderbtnmenos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(lblSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -712,12 +714,15 @@ public class VistaWord extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+     //Controla los cambios del slider para cambiar el label
 
     private void sliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderStateChanged
         CambioSlider();
     }//GEN-LAST:event_sliderStateChanged
-
+    //Por cada index que seleccionemos de la lista de estilos cambiara la fuente
+    //tamaño y propiedades de la fuente, cada estilo es unico
     private void listStyleValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listStyleValueChanged
+
         int valor = listStyle.getSelectedIndex();
         Deseleccionar();
         switch (valor) {
@@ -739,7 +744,7 @@ public class VistaWord extends javax.swing.JFrame {
             case 3:
                 cmbFuente.setSelectedIndex(10);
                 cmbTamaño.setSelectedIndex(7);
-                
+
                 break;
             case 4:
                 cmbFuente.setSelectedIndex(5);
@@ -753,7 +758,7 @@ public class VistaWord extends javax.swing.JFrame {
                 break;
             case 6:
                 cmbFuente.setSelectedIndex(0);
-                cmbTamaño.setSelectedIndex(0);                
+                cmbTamaño.setSelectedIndex(0);
                 break;
             case 7:
                 cmbFuente.setSelectedIndex(5);
@@ -764,26 +769,34 @@ public class VistaWord extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_listStyleValueChanged
-
+    /* Antes de poder cerrarlo preguntara si queremos guardar el archivo
+        *  en caso de cancelar simplemente se cerrara, pero si queremos guardar
+        *  se abrirar una ventana para seleccionar la ruta, no va a guardar en 
+        *  la ruta ya que no lo pide, pero si imprimira la ruta por consola.
+     */
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+
         int confirmacion = JOptionPane.showConfirmDialog(null,
                 "¿Desea guardar antes de salir?", "Mensaje de salida",
                 JOptionPane.YES_NO_OPTION);
         if (confirmacion == JOptionPane.NO_OPTION) {
             dispose();
+        } else {
+            JFileChooser chooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+
+            int num = chooser.showDialog(this, "Guardar Archivo");
+            if (num == JFileChooser.APPROVE_OPTION) {
+                System.out.println(chooser.getSelectedFile().getAbsoluteFile());
+                dispose();
+            }
         }
-        else{
-        JFileChooser chooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-        
-        int num = chooser.showDialog(this, "Guardar Archivo");
-        if (num == JFileChooser.APPROVE_OPTION){
-            System.out.println(chooser.getSelectedFile().getAbsoluteFile());
-            dispose();
-        }
-        }        
     }//GEN-LAST:event_formWindowClosing
 
+    /* Controla los botones que se presionan una vez el textarea tenga el focus
+        *  ctrl+b para negrita, ctrl+i para cursiva, ctrl+u para subrayado
+     */
     private void jTextArea1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyPressed
+
         if (evt.getModifiersEx() == CTRL_DOWN_MASK && evt.getKeyCode() == VK_B) {
             if (tbtnNegrita.isSelected() == true) {
                 tbtnNegrita.setSelected(false);
@@ -806,7 +819,9 @@ public class VistaWord extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jTextArea1KeyPressed
-
+    /*Controla la combinacion de ctrl mas el movimiento de la ruleta
+        * para variar el zoom ficticio del documento(solo varia el slider)
+     */
     private void jTextArea1MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jTextArea1MouseWheelMoved
         if (evt.getWheelRotation() > 0 && evt.getModifiersEx() == CTRL_DOWN_MASK) {
             slider.setValue(slider.getValue() - 1);
@@ -815,9 +830,9 @@ public class VistaWord extends javax.swing.JFrame {
             slider.setValue(slider.getValue() + 1);
         }
     }//GEN-LAST:event_jTextArea1MouseWheelMoved
-
+    //Para los botones + y - del slider, aumentaran el indice o lo bajaran
     private void sliderbtnmenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sliderbtnmenosActionPerformed
-       slider.setValue(slider.getValue() - 1);
+        slider.setValue(slider.getValue() - 1);
     }//GEN-LAST:event_sliderbtnmenosActionPerformed
 
     private void sliderbtnmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sliderbtnmasActionPerformed
@@ -827,13 +842,8 @@ public class VistaWord extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-
+    public static void main(String args[]) {       
+        //Crea la vista con la interfaz FlatLaf modo light
         try {
             javax.swing.UIManager.setLookAndFeel(new FlatLightLaf());
         } catch (Exception ex) {
